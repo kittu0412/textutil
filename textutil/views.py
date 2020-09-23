@@ -8,9 +8,6 @@ from django.shortcuts import render
 #     return HttpResponse('''<a href="https://people.zoho.com/hrportal1524044148053/zp#home/dashboard">Zoho DashBoard</a><br>
 #     <a href="https://www.google.com">Google</a>''')
 
-# def about(request):
-#     return HttpResponse('About Page')
-
 def index(request):
     return render(request,'index.html')
     # return HttpResponse('''<a href="removepunc"> Remove Punctuation</a><br>
@@ -27,7 +24,7 @@ def analyze(request):
     fullcaps = request.POST.get('fullCaps','off')
     newlineremover = request.POST.get('newline','off')
     extraspaceremover = request.POST.get('extraspaceremover','off')
-    charCount = request.POST.get('charcount','off')
+    # charCount = request.POST.get('charcount','off')
     if removepunc == 'on':
         punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
         analyzed = ""
@@ -66,14 +63,12 @@ def analyze(request):
         # Analyze the text
         dtext = analyzed
         # return render(request, 'analyze.html', params)
-    if(charCount == 'on'):
-        c = len(dtext)
-        params = {'purpose': 'Character Counted', 'analyzed_text': c }
+    # if(charCount == 'on'):
+    #     c = len(dtext)
+    #     params = {'purpose': 'Character Counted', 'analyzed_text': c }
+    #     dtext = analyzed
 
-        # Analyze the text
-        dtext = analyzed
-
-    if (removepunc != 'on' and fullcaps!='on' and newlineremover!='on' and extraspaceremover!="on" and charCount != 'on'):
+    if (removepunc != 'on' and fullcaps!='on' and newlineremover!='on' and extraspaceremover!="on"):
         return HttpResponse('Error')
 
     return render(request, 'analyze.html', params)
