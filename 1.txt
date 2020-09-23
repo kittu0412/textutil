@@ -1,1 +1,2 @@
 Getting input from file.
+this change is made by navneet
